@@ -121,6 +121,13 @@ getSalesOrder()   {
 AddSalesOrder(item){
   this.salesOrderCollection.add(item);
 }
+getSingleSalesOrder(salesorderId){
+  return this.afs.doc(`sales_order/${salesorderId}`).snapshotChanges().pipe(map(snap=>{
+   const data = snap.payload.data() as SalesOrder;
+   const id = snap.payload.id;
+   return {id,...data};
+  }));
+}
 // update product information
 updateSalesOrder(id, item: SalesOrder) { 
   this.afs.doc(`sales_order/${id}`).set(item, {merge:true});
