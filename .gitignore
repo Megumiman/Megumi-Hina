@@ -42,5 +42,6 @@ testem.log
 .DS_Store
 Thumbs.db
 
+#ignore environments file to upload
 
 /src/environments
